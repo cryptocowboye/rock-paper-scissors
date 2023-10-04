@@ -6,6 +6,11 @@
         <title></title>
     </head>
     <body>
+        <div class="button-choices">
+            <button class="rock">Rock!</button>
+            <button class="paper">Paper!</button>
+            <button class="scissors">Scissors!</button>
+        </div>
         <script>
             /* Creates a random number between 0-2 and returns the respective choices
                that the computer could choose */
@@ -49,40 +54,26 @@
                     console.log('Uh oh')
                 }
             }
+
+            const rock = document.querySelector(".rock");
+            const paper = document.querySelector(".paper");
+            const scissors = document.querySelector(".scissors");
+
+            rock.addEventListener("click", function() {
+                playRound("rock", getComputerSelection())
+            });
+            paper.addEventListener("click", function() {
+                playRound("paper", getComputerSelection())
+            });
+            scissors.addEventListener("click", function() {
+                playRound("scissors", getComputerSelection())
+            });
             
             /* Iteration of rounds, and variables that keeps tallies of each players
                score. */
-            let game = () => {
-                let playerScore = 0
-                let computerScore = 0
-                for (i = 1; i <= 5; i++) {
-                    let choice = prompt ("Which choice are you choosing? (rock, paper, or scissors)")
-                    let theGame = playRound(choice.toLowerCase(), getComputerSelection())
-                    theGame
-                    if (theGame === 0) {
-                        computerScore++
-                    } else if (theGame === 1) {
-                        playerScore++
-                    } else if (theGame === 2) {
-                        continue
-                    } else {
-                        console.log('game function uh oh.')
-                    }
-                }
-
-                /* An if statement that logs the score out of five rounds to
-                   the console. */
-                if (playerScore > computerScore) {
-                    console.log(`You won out of 5 rounds! You: ${playerScore} to Computer: ${computerScore}!`)
-                } else if (playerScore < computerScore) {
-                    console.log(`You lost out of 5 rounds! You: ${playerScore} to Computer: ${computerScore}`)
-                } else if (playerScore === computerScore) {
-                    console.log(`You tie out of 5 rounds! You: ${playerScore} to Computer: ${computerScore}`)
-                }
-            }
+           
 
             /* The game function is invoked */
-            game()
         </script>
     </body>
 </html>
