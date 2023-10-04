@@ -6,12 +6,15 @@
         <title></title>
     </head>
     <body>
-        <div class="button-choices">
-            <button class="rock">Rock!</button>
-            <button class="paper">Paper!</button>
-            <button class="scissors">Scissors!</button>
+        <div class="container">
+            <div class="scoreboard"></div>
+            <div class="button-choices">
+                <button class="rock">Rock!</button>
+                <button class="paper">Paper!</button>
+                <button class="scissors">Scissors!</button>
+            </div>
+            <div class="result"></div>
         </div>
-        <div class="result"></div>
         <script>
             /* Creates a random number between 0-2 and returns the respective choices
                that the computer could choose */
@@ -60,45 +63,63 @@
             const paper = document.querySelector(".paper");
             const scissors = document.querySelector(".scissors");
             const result = document.querySelector(".result");
+            const scoreboard = document.querySelector(".scoreboard");
 
+            let userScore = 0;
+            let computerScore = 0;
 
             rock.addEventListener("click", function() {
                 let rockRound = playRound("rock", getComputerSelection())
-                if (rockRound === 1) {
+                if (rockRound === 1 && (userScore < 5 && computerScore < 5)) {
+                    userScore += 1
+                    scoreboard.textContent = `You: ${userScore} Computer: ${computerScore}`
                     result.textContent = "You win! Rock beats Scissors!"
-                } else if (rockRound === 0) {
+                } else if (rockRound === 0 && (userScore < 5 && computerScore < 5)) {
+                    computerScore += 1
+                    scoreboard.textContent = `You: ${userScore} Computer: ${computerScore}`
                     result.textContent = "You lost! Paper beats Rock!"
-                } else {
+                } else if (rockRound === 2 && (userScore < 5 && computerScore < 5)){
+                    scoreboard.textContent = `You: ${userScore} Computer: ${computerScore}`
                     result.textContent = "It's a tie! You and the Computer both chose Rock!"
+                } else if (userScore >= 5 || computerScore >= 5){
+                    scoreboard.textContent = `You: ${userScore} Computer: ${computerScore}`
+                    result.textContent = `GAME OVER! ${userScore > computerScore ? "You win!" : "You lose!"}`
                 }
             });
             paper.addEventListener("click", function() {
                 let paperRound = playRound("paper", getComputerSelection())
-                if (paperRound === 1) {
+                if (paperRound === 1 && (userScore < 5 && computerScore < 5)) {
+                    userScore += 1
+                    scoreboard.textContent = `You: ${userScore} Computer: ${computerScore}`
                     result.textContent = "You win! Paper beats Rock!"
-                } else if (paperRound === 0) {
+                } else if (paperRound === 0 && (userScore < 5 && computerScore < 5)) {
+                    computerScore += 1
+                    scoreboard.textContent = `You: ${userScore} Computer: ${computerScore}`
                     result.textContent = "You lost! Scissors beats Paper!"
-                } else {
+                } else if (paperRound === 2 && (userScore < 5 && computerScore < 5)){
                     result.textContent = "It's a tie! You and the Computer both chose Paper!"
+                } else if (userScore >= 5 || computerScore >= 5){
+                    scoreboard.textContent = `You: ${userScore} Computer: ${computerScore}`
+                    result.textContent = `GAME OVER! ${userScore > computerScore ? "You win!" : "You lose!"}`
                 }
             });
             scissors.addEventListener("click", function() {
                 let scissorsRound = playRound("scissors", getComputerSelection())
-                if (scissorsRound === 1) {
+                if (scissorsRound === 1 && (userScore < 5 && computerScore < 5)) {
+                    userScore += 1
+                    scoreboard.textContent = `You: ${userScore} Computer: ${computerScore}`
                     result.textContent = "You win! Scissors beats Paper!"
-                } else if (scissorsRound === 0) {
+                } else if (scissorsRound === 0 && (userScore < 5 && computerScore < 5)) {
+                    computerScore += 1
+                    scoreboard.textContent = `You: ${userScore} Computer: ${computerScore}`
                     result.textContent = "You lost! Rock beats Scissors!"
-                } else {
+                } else if (scissorsRound === 2 && (userScore < 5 && computerScore < 5)){
                     result.textContent = "It's a tie! You and the Computer both chose Scissors!"
+                } else if (userScore >= 5 || computerScore >= 5){
+                    scoreboard.textContent = `You: ${userScore} Computer: ${computerScore}`
+                    result.textContent = `GAME OVER! ${userScore > computerScore ? "You win!" : "You lose!"}`
                 }
             });
-
-            
-            /* Iteration of rounds, and variables that keeps tallies of each players
-               score. */
-           
-
-            /* The game function is invoked */
         </script>
     </body>
 </html>
