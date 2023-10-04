@@ -16,8 +16,7 @@
             <div class="result"></div>
         </div>
         <script>
-            /* Creates a random number between 0-2 and returns the respective choices
-               that the computer could choose */
+
             let getComputerSelection = () => {
                 let choice = Math.floor(Math.random() * 3)
                 if (choice === 0) {
@@ -30,8 +29,8 @@
                     console.log('getComputerSelection oopsie')
                 }
             }
-            /* A round of rps, where the computer's choice and the player's choices are compared
-               and returns a value to be interpreted for the tally. */
+
+
             let playRound = (playerSelection, computerSelection) => {
                 if (playerSelection === 'rock' && computerSelection === 'scissors') {
                     return 1
