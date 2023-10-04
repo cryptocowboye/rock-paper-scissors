@@ -11,6 +11,7 @@
             <button class="paper">Paper!</button>
             <button class="scissors">Scissors!</button>
         </div>
+        <div class="result"></div>
         <script>
             /* Creates a random number between 0-2 and returns the respective choices
                that the computer could choose */
@@ -58,16 +59,40 @@
             const rock = document.querySelector(".rock");
             const paper = document.querySelector(".paper");
             const scissors = document.querySelector(".scissors");
+            const result = document.querySelector(".result");
+
 
             rock.addEventListener("click", function() {
-                playRound("rock", getComputerSelection())
+                let rockRound = playRound("rock", getComputerSelection())
+                if (rockRound === 1) {
+                    result.textContent = "You win! Rock beats Scissors!"
+                } else if (rockRound === 0) {
+                    result.textContent = "You lost! Paper beats Rock!"
+                } else {
+                    result.textContent = "It's a tie! You and the Computer both chose Rock!"
+                }
             });
             paper.addEventListener("click", function() {
-                playRound("paper", getComputerSelection())
+                let paperRound = playRound("paper", getComputerSelection())
+                if (paperRound === 1) {
+                    result.textContent = "You win! Paper beats Rock!"
+                } else if (paperRound === 0) {
+                    result.textContent = "You lost! Scissors beats Paper!"
+                } else {
+                    result.textContent = "It's a tie! You and the Computer both chose Paper!"
+                }
             });
             scissors.addEventListener("click", function() {
-                playRound("scissors", getComputerSelection())
+                let scissorsRound = playRound("scissors", getComputerSelection())
+                if (scissorsRound === 1) {
+                    result.textContent = "You win! Scissors beats Paper!"
+                } else if (scissorsRound === 0) {
+                    result.textContent = "You lost! Rock beats Scissors!"
+                } else {
+                    result.textContent = "It's a tie! You and the Computer both chose Scissors!"
+                }
             });
+
             
             /* Iteration of rounds, and variables that keeps tallies of each players
                score. */
